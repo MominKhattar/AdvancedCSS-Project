@@ -3,7 +3,7 @@ $color-primary-light:#7ed56f
 $color-primary-dark:#28b485
 $color-white:#fff
 $color-gey:#777
-
+$color-black:#000000
 * {
     padding: 0;
     margin: 0;
@@ -22,46 +22,54 @@ $color-gey:#777
     background-position: top;
     background-size: cover;
     clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0% 100%);
-    position: relative; }
+    position: relative; 
+
+        &logo-box {
+            position: absolute;
+            top: 40px;
+            left: 40px; }
+
+        &logo {
+        height: 35px; }
+    
+        &text-box {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; }
+
+
+        &heading-primary {
+            color: $color-white;
+            text-transform: uppercase;
+            backface-visibility: hidden; 
+        
+            &heading-primary-main {
+                display: block;
+                font-size: 60px;
+                letter-spacing: 35px;
+                font-weight: 400;
+                animation-name: moveInLeft;
+                animation-duration: 1s;
+                animation-timing-function: ease-out; }
+            
+            &heading-primary-sub {
+                display: block;
+                font-size: 20px;
+                letter-spacing: 16.5px;
+                font-weight: 700;
+                animation-name: moveInRight;
+                animation-duration: 1s;
+                animation-timing-function: 1s; }
+            
+        }
+       
+}
   
-  .logo-box {
-    position: absolute;
-    top: 40px;
-    left: 40px; }
-  
-  .logo {
-    height: 35px; }
-  
-  .text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; }
-  
-  .heading-primary {
-    color: $color-white;
-    text-transform: uppercase;
-    backface-visibility: hidden; }
-  
-  .heading-primary-main {
-    display: block;
-    font-size: 60px;
-    letter-spacing: 35px;
-    font-weight: 400;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out; }
-  
-  .heading-primary-sub {
-    display: block;
-    font-size: 20px;
-    letter-spacing: 16.5px;
-    font-weight: 700;
-    animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: 1s; }
-  
+  //Animation part start
+
+
   @keyframes moveInLeft {
     0% {
       opacity: 0;
@@ -89,31 +97,38 @@ $color-gey:#777
     100% {
       opacity: 1;
       transform: translateX(0); } }
+
+    //Animation part End
   
-  .btn:link,
-  .btn:visited {
+.btn{
+    &:link,
+  &:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 40px;
     display: inline-block;
     border-radius: 200px;
     transition: all 0.2s;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
     position: relative; }
   
-  .btn:hover {
+  &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 5px 10px rgba($color-black, 0.2); }
   
-  .btn:active {
+  &:active {
     transform: translateY(1px); }
   
-  .btn-white {
+  &-white {
     background-color: $color-white;
     color: $color-gey;
-    margin-top: 25px; }
+    margin-top: 25px;
+
+        &::after {
+            background-color: $color-white; }
+     }
   
-  .btn::after {
+  &::after {
     content: "";
     display: inline-block;
     height: 100%;
@@ -125,17 +140,15 @@ $color-gey:#777
     z-index: -1;
     transition: all 0.4s; }
   
-  .btn-white::after {
-    background-color: $color-white; }
-  
-  .btn:hover::after {
+  &:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0; }
   
-  .btn-animated {
+  &-animated {
     animation-name: moveInBottom;
     animation-duration: 1s;
     animation-timing-function: ease-out;
     animation-delay: 0.75s;
     animation-fill-mode: backwards; }
   
+}
